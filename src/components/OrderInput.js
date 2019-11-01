@@ -1,7 +1,7 @@
 import React from 'react';
 import { SelectPicker, InputNumber } from 'rsuite';
 
-const OrderInput = ({dishes, order, onChangeOrder, onChangeQuantity, ControlBtn}) => {
+const OrderInput = ({dishes, order, onChangeOrder, onChangeQuantity, err, ControlBtn}) => {
   return (
     <>
       <div>Please select a meal</div>
@@ -13,9 +13,13 @@ const OrderInput = ({dishes, order, onChangeOrder, onChangeQuantity, ControlBtn}
           onChange={onChangeOrder}
         />
       </div>
+      {
+        err && <div>{err}</div>
+      }
       <div>Please select quantity</div>
       <div>
           <InputNumber
+            min={1}
             value={order.quantity}
             onChange={onChangeQuantity}
           />

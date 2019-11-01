@@ -8,7 +8,7 @@ import {
 } from 'store/modules/ui';
 
 import {
-  formSelector,
+  formSelector, setOrder,
 } from 'store/modules/form';
 
 import {
@@ -21,7 +21,7 @@ import {
 
 
 const Step3 = () => {
-  const { restaurant, orders } = useMappedState(formSelector);
+  const { number, restaurant, orders } = useMappedState(formSelector);
 
   const mapState = useCallback((state) => {
     const dishes = dishesSelector(state);
@@ -34,6 +34,7 @@ const Step3 = () => {
   const dishes = useMappedState(mapState);
   
   const [currentOrder, setCurrentOrder] = useState(orders);
+  const [valid, setValid] = useState({});
 
   let tempCount = useRef(currentOrder.length - 1);
 
@@ -75,6 +76,40 @@ const Step3 = () => {
     setCurrentOrder([...currentOrder]);
   }
 
+  const validate = () => {
+    const map = new Map([[null, []]]);
+    let total = 0;
+
+    currentOrder.forEach((o) => {
+      if (!o.dish) {
+        map.get(null).push(o.key);
+      } else if (map.has(o.dish.id)) {
+        map.get(o.dish.id).push(o.key);
+      } else {
+        map.set(o.dish.id, [o.key]);
+      }
+      total += o.quantity;
+    });
+
+    let result = {};
+
+    for (var [key, arr] of map.entries()) {
+      if (key === null) {
+        result = arr.reduce((s, k) => ({...s, [k]: 'Please select a dish'}), result);
+      } else if (arr.length > 1) {
+        result = arr.reduce((s, k) => ({...s, [k]: 'Can\'t select the same dish'}), result);
+      }
+    }
+
+    if (total < number) {
+      result['number'] = 'You need more food';
+    }
+
+    setValid(result);
+
+    return !Object.keys(result).length
+  }
+
 
   return (
     <div>
@@ -88,10 +123,14 @@ const Step3 = () => {
               onChangeOrder={onChangeOrder(o.key)}
               onChangeQuantity={onChangeQuantity(o.key)}
               ControlBtn={k === currentOrder.length - 1 ? <AddButton /> : <DelButton id={o.key} />}
+              err={valid[o.key]}
             />
           ))
         }
       </div>
+      {
+        valid.number && <div>{valid.number}</div>
+      }
       <div>
         <Button
           onClick={()=> { dispatch(clickPrevStep()) }}
@@ -99,11 +138,11 @@ const Step3 = () => {
           PREV
         </Button>
         <Button
-          onClick={()=> { 
-            // if (!validate()) {
-            //   return
-            // }
-            // dispatch(setRestaurant({ restaurant: select }));
+          onClick={()=> {
+            if (!validate()) {
+              return
+            }
+            dispatch(setOrder({ orders: currentOrder }));
             dispatch(clickNextStep())
           }}
         >
