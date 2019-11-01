@@ -13,6 +13,7 @@ import {
 
 import {
   ButtonPanel,
+  ErrMsg,
 } from 'styles/pages';
 
 const Step1 = () => {
@@ -56,7 +57,7 @@ const Step1 = () => {
           />
         </div>
         {
-          !valid.meal && <div>Please select a meal</div>
+          !valid.meal && <ErrMsg>Please select a meal</ErrMsg>
         }
       </div>
       <div>

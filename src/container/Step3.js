@@ -21,6 +21,7 @@ import {
 
 import {
   ButtonPanel,
+  ErrMsg,
 } from 'styles/pages';
 
 
@@ -133,7 +134,7 @@ const Step3 = () => {
         }
       </div>
       {
-        valid.number && <div>{valid.number}</div>
+        valid.number && <ErrMsg>{valid.number}</ErrMsg>
       }
       <ButtonPanel>
         <Button

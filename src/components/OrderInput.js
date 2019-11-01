@@ -1,6 +1,10 @@
 import React from 'react';
 import { SelectPicker, InputNumber } from 'rsuite';
 
+import {
+  ErrMsg,
+} from 'styles/pages';
+
 const OrderInput = ({dishes, order, onChangeOrder, onChangeQuantity, err, ControlBtn}) => {
   return (
     <>
@@ -14,7 +18,7 @@ const OrderInput = ({dishes, order, onChangeOrder, onChangeQuantity, err, Contro
         />
       </div>
       {
-        err && <div>{err}</div>
+        err && <ErrMsg>{err}</ErrMsg>
       }
       <div>Please select quantity</div>
       <div>
