@@ -2,19 +2,22 @@
 const initState = {
   meal: null,
   number: 0,
-  restaurant: '',
+  restaurant: null,
   orders: [],
 }
 
 export const formSelector = state => state.form;
 
 const prefix = 'FORM';
-const SETMEAL = `${prefix}/SETMEAL`
+const SETMEAL = `${prefix}/SETMEAL`;
+const SETRESTAURANT = `${prefix}/SETRESTAURANT`;
+
 
 
 const formReducer = (state = {...initState}, action = {}) => {
   switch (action.type) {
     case SETMEAL:
+    case SETRESTAURANT:
       return {
         ...state,
         ...action.payload,
@@ -27,12 +30,13 @@ const formReducer = (state = {...initState}, action = {}) => {
 
 export const setMeal = (mealData) => ({
   type: SETMEAL,
-  payload: mealData
-})
+  payload: mealData,
+});
 
-// export const clickNextStep = () => ({
-//   type: NEXTSTEP,
-// })
+export const setRestaurant = (restaurantData) => ({
+  type: SETRESTAURANT,
+  payload: restaurantData,
+});
 
 
 export default formReducer;

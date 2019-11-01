@@ -71,10 +71,11 @@ const Step1 = () => {
       <div>
         <Button
           onClick={()=> {
-            if (validate()) {
-              dispatch(setMeal({ meal: select, number: inputNumber}))
-              dispatch(clickNextStep())
+            if (!validate()) {
+              return
             }
+            dispatch(setMeal({ meal: select, number: inputNumber}));
+            dispatch(clickNextStep());
           }}
         >
           NEXT
