@@ -63,7 +63,10 @@ const Step2 = () => {
       }
       <ButtonPanel>
         <Button
-          onClick={()=> { dispatch(clickPrevStep()) }}
+          onClick={()=> {
+            dispatch(setRestaurant({ restaurant: select }));
+            dispatch(clickPrevStep());
+          }}
         >
           PREV
         </Button>
@@ -73,7 +76,7 @@ const Step2 = () => {
               return
             }
             dispatch(setRestaurant({ restaurant: select }));
-            dispatch(clickNextStep())
+            dispatch(clickNextStep());
           }}
         >
           NEXT

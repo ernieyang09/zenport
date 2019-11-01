@@ -137,7 +137,10 @@ const Step3 = () => {
       }
       <ButtonPanel>
         <Button
-          onClick={()=> { dispatch(clickPrevStep()) }}
+          onClick={()=> {
+            dispatch(setOrder({ orders: currentOrder }));
+            dispatch(clickPrevStep());
+          }}
         >
           PREV
         </Button>
@@ -147,7 +150,7 @@ const Step3 = () => {
               return
             }
             dispatch(setOrder({ orders: currentOrder }));
-            dispatch(clickNextStep())
+            dispatch(clickNextStep());
           }}
         >
           NEXT
