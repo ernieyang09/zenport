@@ -3,7 +3,7 @@ const initState = {
   meal: null,
   number: 0,
   restaurant: null,
-  orders: [],
+  orders: [{ key: 0, dish: null, quantity: 1 }],
 }
 
 export const formSelector = state => state.form;
