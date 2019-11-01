@@ -60,6 +60,7 @@ const Step1 = () => {
         <div>
           <InputNumber
             value={inputNumber}
+            min={1}
             onChange={(val) => { setInputNumber(val); }}
           />
         </div>
