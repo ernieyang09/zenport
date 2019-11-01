@@ -19,6 +19,10 @@ import {
   OrderInput,
 } from 'components';
 
+import {
+  ButtonPanel,
+} from 'styles/pages';
+
 
 const Step3 = () => {
   const { number, restaurant, orders } = useMappedState(formSelector);
@@ -131,7 +135,7 @@ const Step3 = () => {
       {
         valid.number && <div>{valid.number}</div>
       }
-      <div>
+      <ButtonPanel>
         <Button
           onClick={()=> { dispatch(clickPrevStep()) }}
         >
@@ -148,7 +152,7 @@ const Step3 = () => {
         >
           NEXT
         </Button>
-      </div>
+      </ButtonPanel>
     </div>
   )
 }

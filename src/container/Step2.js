@@ -16,6 +16,11 @@ import {
   dishesSelector,
 } from 'store/modules/dishes';
 
+import {
+  ButtonPanel,
+} from 'styles/pages';
+
+
 const Step2 = () => {
   const { meal, restaurant } = useMappedState(formSelector);
 
@@ -56,7 +61,7 @@ const Step2 = () => {
       {
         !valid.restaurant && <div>Please select a restaurant</div>
       }
-      <div>
+      <ButtonPanel>
         <Button
           onClick={()=> { dispatch(clickPrevStep()) }}
         >
@@ -73,7 +78,7 @@ const Step2 = () => {
         >
           NEXT
         </Button>
-      </div>
+      </ButtonPanel>
     </div>
   )
 }

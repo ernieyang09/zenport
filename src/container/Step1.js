@@ -11,6 +11,10 @@ import {
   setMeal,
 } from 'store/modules/form';
 
+import {
+  ButtonPanel,
+} from 'styles/pages';
+
 const Step1 = () => {
   const dispatch = useDispatch();
   const { meal, number } = useMappedState(formSelector);
@@ -69,7 +73,8 @@ const Step1 = () => {
         }
         
       </div>
-      <div>
+      <ButtonPanel>
+        <div></div>
         <Button
           onClick={()=> {
             if (!validate()) {
@@ -81,7 +86,7 @@ const Step1 = () => {
         >
           NEXT
         </Button>
-      </div>
+      </ButtonPanel>
     </div>
   )
 }

@@ -10,6 +10,10 @@ import {
   clickPrevStep,
 } from 'store/modules/ui';
 
+import {
+  ButtonPanel,
+} from 'styles/pages';
+
 const Step4 = () => {
   const { meal, number, restaurant, orders } = useMappedState(formSelector);
 
@@ -28,7 +32,7 @@ const Step4 = () => {
           </Panel>
         </Panel>
       </div>
-      <div>
+      <ButtonPanel>
         <Button
           onClick={()=> { dispatch(clickPrevStep()) }}
         >
@@ -40,7 +44,7 @@ const Step4 = () => {
         >
           SUBMIT
         </Button>
-      </div>
+      </ButtonPanel>
     </div>
   )
 }
