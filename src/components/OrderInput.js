@@ -20,6 +20,7 @@ const OrderInput = ({dishes, order, onChangeOrder, onChangeQuantity, err, Contro
       <div>
           <InputNumber
             min={1}
+            max={10}
             value={order.quantity}
             onChange={onChangeQuantity}
           />
