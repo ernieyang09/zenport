@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Panel, Button } from 'rsuite';
+import { Panel, Button, Notification } from 'rsuite';
 import { useMappedState ,useDispatch} from 'redux-react-hook';
 
 import {
@@ -40,6 +40,11 @@ const Step4 = () => {
         </Button>
         <Button
           onClick={()=> {
+            console.log("Your order is here.", { meal, number, restaurant, orders });
+            Notification['success']({
+              title: 'success',
+              description: <div>Please checck your console log</div>
+            })
           }}
         >
           SUBMIT
