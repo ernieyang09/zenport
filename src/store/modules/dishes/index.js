@@ -1,4 +1,4 @@
-// @flow
+
 const dishes = [
   {
     "id": 1,

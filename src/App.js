@@ -1,4 +1,4 @@
-// @flow
+
 import React from 'react';
 import { Page } from './components';
 import 'rsuite/dist/styles/rsuite-default.css';
