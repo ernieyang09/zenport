@@ -5,9 +5,9 @@ import type {
 
 
 const prefix = 'FORM';
-const SETMEAL = `${prefix}/SETMEAL`;
-const SETRESTAURANT = `${prefix}/SETRESTAURANT`;
-const SETORDER = `${prefix}/SETORDER`;
+export const SETMEAL = `${prefix}/SETMEAL`;
+export const SETRESTAURANT = `${prefix}/SETRESTAURANT`;
+export const SETORDER = `${prefix}/SETORDER`;
 
 type Dish = {
   id: number,
@@ -40,7 +40,7 @@ type SetOrderActionType = ActionWithPayloadType<typeof SETORDER, OrderData >;
 type FormAction = SetMealActionType | SetRestaurantActionType | SetOrderActionType
 
 
-const initState = {
+export const initState = {
   meal: null,
   number: 1,
   restaurant: null,
