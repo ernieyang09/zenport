@@ -33,11 +33,13 @@ type MealData = {| meal: string, number: number |};
 type RestaurantData = {| restaurant: ?string |};
 type OrderData = {| orders: Array<Order> |};
 
+export type FormData = MealData | RestaurantData | OrderData;
+
 type SetMealActionType = ActionWithPayloadType<typeof SETMEAL, MealData>;
 type SetRestaurantActionType = ActionWithPayloadType<typeof SETRESTAURANT, RestaurantData >;
 type SetOrderActionType = ActionWithPayloadType<typeof SETORDER, OrderData >;
 
-type FormAction = SetMealActionType | SetRestaurantActionType | SetOrderActionType
+export type FormAction = SetMealActionType | SetRestaurantActionType | SetOrderActionType
 
 
 export const initState = {

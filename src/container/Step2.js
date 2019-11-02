@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useCallback } from 'react';
 import { SelectPicker, Button } from 'rsuite';
 import { useMappedState ,useDispatch} from 'redux-react-hook';
@@ -7,13 +8,25 @@ import {
   clickNextStep,
 } from 'store/modules/ui';
 
+import type {
+  UIAction,
+} from 'store/modules/ui';
+
 import {
   formSelector,
   setRestaurant,
 } from 'store/modules/form';
 
+import type {
+  FormAction,
+} from 'store/modules/form';
+
 import {
   dishesSelector,
+} from 'store/modules/dishes';
+
+import type {
+  Dish
 } from 'store/modules/dishes';
 
 import {
@@ -22,12 +35,15 @@ import {
 } from 'styles/pages';
 
 
+
+
+
 const Step2 = () => {
   const { meal, restaurant } = useMappedState(formSelector);
 
   const mapState = useCallback((state) => {
-    const dishes = dishesSelector(state);
-    const restaurants = dishes
+    const dishes: Array<Dish> = dishesSelector(state);
+    const restaurants: Array<string> = dishes
       .filter(d => d.availableMeals.some(m => m === meal))
       .map(d => d.restaurant)
     return [...new Set(restaurants)]
@@ -45,7 +61,7 @@ const Step2 = () => {
   }
   
 
-  const dispatch = useDispatch();
+  const dispatch: ((FormAction | UIAction) => void) = useDispatch();
 
 
   return (
@@ -56,7 +72,7 @@ const Step2 = () => {
           data={restaurants.map(r => ({ label: r, value: r }))}
           searchable={false}
           value={select}
-          onChange={(val) => { setSelect(val); }}
+          onChange={(val: string) => { setSelect(val); }}
         />
       </div>
       {
@@ -72,6 +88,7 @@ const Step2 = () => {
           PREV
         </Button>
         <Button
+          data-test-id='next'
           onClick={()=> { 
             if (!validate()) {
               return

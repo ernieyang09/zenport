@@ -1,4 +1,4 @@
-
+// @flow
 const dishes = [
   {
     "id": 1,
@@ -200,21 +200,17 @@ const dishes = [
   }
 ];
 
-type Dish = {
+export type Dish = {
   id: number,
   name: string,
   restaurant: string,
   availableMeals: Array<string>
 }
 
-type Action = {
-
-}
-
-export const dishesSelector = state => state.dishes;
+export const dishesSelector = (state: Object): Array<Dish> => state.dishes;
 
 
-const dishesReducer = (state: Array<Dish> = dishes, action: Action = {}) => {
+const dishesReducer = (state: Array<Dish> = dishes, action: {}) => {
   return state;
 }
 

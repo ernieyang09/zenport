@@ -16,7 +16,7 @@ type UIState = {
 type PrevStepActionType = ActionWithoutPayloadType<typeof PREVSTEP>;
 type NextStepActionType = ActionWithoutPayloadType<typeof NEXTSTEP>;
 
-type UIAction = PrevStepActionType | NextStepActionType
+export type UIAction = PrevStepActionType | NextStepActionType
 
 export const uiSelector = (state: Object): UIState => state.ui;
 

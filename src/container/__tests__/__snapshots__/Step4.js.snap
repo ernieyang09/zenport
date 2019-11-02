@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step4 should render with given state from Redux store 1`] = `
+<div>
+  <div>
+    Please select a restaurant
+  </div>
+  <div>
+    <div
+      className="rs-picker-select rs-picker-default rs-picker-toggle-wrapper rs-picker-placement-bottom-start rs-picker-has-value rs-picker-cleanable"
+      onClick={[Function]}
+      role="menu"
+      tabIndex={-1}
+    >
+      <a
+        className="rs-picker-toggle"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="combobox"
+        tabIndex={0}
+      >
+        <span
+          className="rs-picker-toggle-value"
+        >
+          Mc Donalds
+        </span>
+        <span
+          className="rs-picker-toggle-clean"
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          ✕
+        </span>
+        <span
+          className="rs-picker-toggle-caret"
+        />
+        <span
+          className="rs-ripple-pond"
+        >
+          <span
+            className="rs-ripple"
+            style={Object {}}
+          />
+        </span>
+      </a>
+    </div>
+  </div>
+  <div
+    className="css-10urh76"
+  >
+    <button
+      className="rs-btn rs-btn-default"
+      onClick={[Function]}
+      type="button"
+    >
+      PREV
+      <span
+        className="rs-ripple-pond"
+      >
+        <span
+          className="rs-ripple"
+          style={Object {}}
+        />
+      </span>
+    </button>
+    <button
+      className="rs-btn rs-btn-default"
+      data-test-id="next"
+      onClick={[Function]}
+      type="button"
+    >
+      NEXT
+      <span
+        className="rs-ripple-pond"
+      >
+        <span
+          className="rs-ripple"
+          style={Object {}}
+        />
+      </span>
+    </button>
+  </div>
+</div>
+`;
